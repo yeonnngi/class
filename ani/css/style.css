@@ -1,0 +1,243 @@
+@charset "UTF-8";
+/* 한글 안깨지도록 */
+@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&display=swap);
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: lightgray;
+}
+
+.box1 {
+    background-color: #fff;
+    margin-top: 100px;
+}
+
+.box1 .child {
+    width: 300px;
+    background-color: orangered;
+    margin: 0 auto;
+    /* 정중앙 */
+    padding: 30px 0;
+    /* 상하 30, 좌우 0 */
+    font-size: 30px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 20px;
+    /* 반지름이 20인 원이 돌아가는 만큼 곡선을 줘라, 50%를 줬을경우 원모양 */
+    /* border: 10px solid orangered;
+    transition-property: background-color;
+    transition-duration: 0.3s;
+    transition-delay: 0.5s;
+    호버했을때 0.5초 있다가 0.3초동안 배경 색이 변하길 원한다
+    transition-timing-function: ease);
+    속도를 조절하는것 ex)서울까지 가는데 대구까지는 천천히 가다 빨리가는것 */
+    transition: background-color 0.3s 0.5s ease, transform 0.4s 0.8s ease;
+    /* 컬러변경시간값/뒤에 값은 무조건 지연시간     아래 호버시 해당하는 값 */
+    transition: 0.3s;
+    /* transition: 관련해서는 압축해서 작성 가능 */
+    /* transition: all 0.3s 0.2s ease; 0.3초 동안 0.2초를 유지해서 변화해라 
+    all 삭제해도 가능*/
+}
+
+.box1:hover .child {
+    background-color: purple;
+    transform: translateY(-30px)
+}
+
+.box2 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    width: 400px;
+    margin: 50px auto 0;
+    background-color: aquamarine;
+    color: #222;
+    text-align: center;
+    line-height: 2.5;
+    /* 원래가진 행간의 2.5% 주기 */
+    overflow: hidden;
+}
+
+.box2 p {
+    transform: translateX(-100%);
+    /* 자신의 넓이만큼 왼쪽으로 간 것 */
+    transition: 0.5s;
+}
+
+/* 한줄씩 나타나게 하는 것으로도 설정 가능, 개별 지연시간을 다르게 주기*/
+.box2 p.one {
+    transition-delay: 0.3s;
+}
+
+/* p태그인데 one으로 띄어쓰기X */
+.box2 p.two {
+    transition-delay: 0.6s;
+}
+
+.box2 p.three {
+    transition-delay: 0.9s;
+}
+
+.box2:hover p {
+    transform: translateX(0%);
+}
+
+.box3{
+    background-color: chocolate;
+    font-size: 30px;
+    color: #fff;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    /* 행간을 높이와 같이 맞춰주면 글이 중앙으로 위치할 수 있음 */
+    margin-top: 50px;
+    animation-name: box_ani;/* ◀애니메이션의 이름 keyframes 이름과 반드시 동일 */
+    animation-duration: 2s; /* ◀애니메이션 지속시간, s는 second의 약자  */
+    animation-iteration-count: 3;
+    /* ▲애니메이션 반복 횟수, infinite는 무한반복 */
+    animation-direction: normal; /* 기본값이라면 지워도 됨 */
+    /* ▲애니메이션의 방향
+    기본값 normal
+    alternate 정->역->정(실행과 반실행의 반복 왔다갔다) 
+    alternate-reverse 역->정->역(시작 위치가 다른 왔다갔다)
+    reverse 위치의 시작이 거꾸로*/
+    animation-delay: 1s; /* 애니메이션의 지연시간 설정해준 시간 후 애니메이션이 플레이됨 */
+    animation-timing-function: linear;
+    /* 애니메이션 움직임의 속도 지정 
+    처음은 빠르게가다 느리게와 같이 설정가능
+    일정하게 움직이고 싶다면 liner */
+    animation-fill-mode: both;
+    /* 애니메이션의 처음과 끝의 상태 
+    forwards는 애니가 끝난 위치에서 멈춤
+    backwards는 시작을 keyframes의 0%인 상태부터 시작 both : forwards + backwards 동시 적용 가능*/
+    /* 위의 내용을 압축해서 적어보기->box4에 */
+}
+
+/* 어떤 애니메이션이 이루어질건지에 대한 작성 */
+@keyframes box_ani{
+    /* 시작지점 from=0% 0초일때  */
+    from{margin-left: 100px;}
+    /* 도착지점 to=100%
+    설정해준 시간이 끝나는 지점 */
+    to{margin-left: 400px;}
+
+    /* 1)left나 top값으로 움직이게 만들려면 반드시 포지션이 꼭 있어야하는데 주변에 아무 영향없이 위치만 부여해야해서 relative를 해준다 */
+    /* 2)포지션이 아니더라도 앞쪽에 공간을 주는 설정으로도 지정 가능 margin-left: */
+}
+
+.box4{
+    margin: 100px 0 400px;
+    font-size: 30px;
+    text-align: center;
+    width: 100px; height: 100px;
+    line-height: 100px;
+    background-color: dodgerblue;
+    color: #fff;
+    /* animation-name: box_ani2;
+    animation-duration: 4s;
+    animation-iteration-count: 1s;
+    animation-direction: normal;
+    animation-timing-function: linear;
+    ▲ 애니메이션 가속화 시간
+    animation-fill-mode: both; 시작종료시 부드러운 움직임*/
+
+    /* ▼ 위의 내용을 한줄로 압축가능 */
+    animation: box_ani2 4s linear 1s infinite both;
+}
+
+@keyframes box_ani2{
+    0%{transform: translate(100px,0);}
+    25%{transform: translate(300px,0);}
+    50%{transform: translate(300px,200px);}
+    75%{transform: translate(100px,200px);}
+    100%{transform: translate(100px,0);}
+}
+
+.약::after{
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.box5{
+    width: 1000px;
+    background-color: antiquewhite;
+    padding: 20px;
+    margin: 0 auto;
+    /* 원근감을 주기 위함, 자식에 3d를 주고 싶으면 부모에 perspective를 꼭 줘야힘 픽셀을 작게주면 얼굴에 부딪히는 느낌 */
+    perspective: 600px;
+
+}
+/* >바로 밑의 자식만 포함 */
+.box5>div{ 
+    float: left;
+    width: 49%; height: 300px;
+    background-color: cornflowerblue;
+} 
+.box5>div.child_1{
+    margin-right: 2%;
+    position: relative; /* .ro를 잡아주기 위한것 */
+    transform-style: preserve-3d;
+    /* 부모에게 perspective를 줬으면 중간단계에 trandform-style: preserve-3d를 줘야함 */
+}
+
+.box5>div.child_1 .ro{
+    background-color: blueviolet;
+    position: absolute;
+    left: 55%; top: 35%; /* child1기준으로 왼쪽 55, 위로 35로 붙어라 */
+    padding: 20px 30px;
+    font-size: 40px;
+    color: #fff;
+    transform: translateZ(300px) rotateY(45deg); 
+    /* 바닥에 있는 부모로부터 300px 앞으로 땡겨서 작업하는것 부모에게 묻히지 않음 */
+    /* deg는 degree의 약자 각도 */
+    transform-origin: left center;
+    /* 방향, 왼쪽을 기준을 잡고, 중앙에서 회전하겠다 */
+}
+
+.box5>div.child_2{
+    position: relative;
+    perspective: 600px;
+    /* ▲ 대장 box5에 카메라를 줬지만 초점이 중앙인 상태로 child2 초점에 맞는 카메라 부여 필요 */
+}
+
+.box5>div.child_2 .top{
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    color: #222;
+    transform-style: preserve-3d;
+    /* 대장 box5에 카메라 줬기 때문에 중간단계에게 transform-style: preserve-3d; 주기 */
+}
+.box5>div.child_2 .top div{
+    /* Y 아래쪽으로 내몸의 100%까지 내려 갔다가 돌아오게 함 */
+    transform: translateY(100%) rotateX(-80deg);
+    transform-origin: center top; /* 끝선을 기준으로 회전하기 위함 */
+    opacity: 0;
+    transition: 0.8s cubic-bezier(0.1, 0.26, 0.23, 1.24); /* 끝을 천천히 마무리 */
+}
+
+.box5>div.child_2:hover .top div{
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.2s;
+    /* 0.2초 있다가 고개 들도록 설정 */
+}
+
+/* div 두 개중 첫째를 부르는 방법
+top의 자식중 첫째 */
+.box5>div.child_2:hover .top div:first-child{}
+
+/* top의 자식중 막내 */
+.box5>div.child_2:hover .top div:last-child{
+    transition-delay: 0.4s;
+    /* 영어가 먼저 뜨고 한글은 후에 뜨게 설정 */
+}

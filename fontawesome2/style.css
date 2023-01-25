@@ -1,0 +1,32 @@
+/* .section뒤에 fontawesome 넣어주기 */
+.section::after{
+    content: "\f1bb";
+    /* fontawesome 5버전을 css에서 사용하기 위해서는
+    위의 font name과 함께 font-family, font-weight가 같이 들어가야함 */
+    font-family: "Font Awesome 5 Free";
+    /* 무료버전사용시에는 Free로 변경해야함 */
+    font-weight: 900;
+}
+
+.wrap2{
+    position: relative; /* section2의 기준 */
+    margin-top: 50px;
+    width: 400px; height: 400px;
+    background-color: palevioletred;
+}
+
+.wrap2 .section2{
+    position: absolute;
+    left: calc(50% - 50px);
+    top: calc(50% - 50px); 
+    /* 기준이 왼쪽에서 50%, 위에서 50%만큼 떨어졌음
+    부모의 정중앙으로 가려면 자기몸의 50%만큼(절반) 앞으로 위로 당겨야 부모의 정중앙에 위치할 수 있다 */
+
+    /* transform: translate(-50%,-50%)를 쓰게되면 
+    추후 애니메이션 작업시 깨지지 말라고 위치를 계속 표시해줘야 하기때문에 계속 반복해서 적어야함 코드 중복 방지를 위해 다른 방법으로 사용,
+    ▼ 
+    left: calc(50% - 50px) 50% - 50px은 꼭 띄어서 사용해야하며 %에서 px을 빼는 것은 계산기가 필요하기 때문에 calc()로 묶어주기 */
+
+    width: 100px; height: 100px;
+    background-color: blue;
+}

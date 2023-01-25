@@ -1,0 +1,210 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.치료::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.전체 {
+    color: red;
+    width: 1000px;
+    margin: 0 auto;
+    /* 마진없이 정중앙에 위치 */
+    padding: 20px;
+    margin-top: 30px;
+    background-color: gray;
+    height: 600px;
+    /* 부모가 값이 있을때만 부모의 기준으로 %가 먹힐 수 있다 */
+}
+
+.전체 .첫째 {
+    background: #82AAE3;
+    padding: 20px;
+}
+
+.전체 .첫째 .첫자 {
+    background-color: #F3CCFF;
+    width: 32%;
+    margin-right: 2%;
+    height: 200px;
+    /* 자식의 높이를 따라가지 않는 것은 부모에게 높이를 강제로 지정해주고 자식들보고 따라가라고한 경우라서 */
+    float: left;
+}
+
+/* 공통 적용된 이름은 붙여쓰기 */
+.전체 .첫째 .첫자.첫자1 {
+    position: relative;
+    overflow: hidden;
+    /* 내 영역보다 넘치는건 안보이게 하겠다 */
+}
+
+.전체 .첫째 .첫자.첫자1 .하 {
+    position: relative;
+    /* 주위에 아무런 영향 없이 h4의 기준만 되어주기 위해 사용, 부모가 포지션이 없을 경우 자식은 단군할아버지인 body에 속하게 되므로 가까운 공간인 부모의 제어 필요*/
+    height: 100%;
+    /* 자식은 부모의 높이를 따라가지 않기 때문에 이렇게 개별로 지정해줘야함 */
+    background-image: url(../image/img1.jpg);
+    /* ../는 상위 요소를 불러오는 명령어 style.cc는 부모인 css폴더로 가야 image폴더의 파일을 불러올 수 있다 */
+    background-size: cover;
+    /* contain : cover "  */
+    background-position: center center;
+    /* background-position: center 와 동일
+    이미지를 정중앙으로 위치하게 함, 원래 center center로 x y값 모두 적는데 둘다 center일 경우는 한번만 적어줘도 됨*/
+}
+
+/* ▼ 클래스이름에는 .을 붙이는데 태그에는 .을 붙이지 않는다 */
+.전체 .첫째 .첫자.첫자1 .하 h4 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* 내몸의 x값 -50%만큼, y값 -50%만큼 이동하겠다는 것 */
+}
+
+.전체 .첫째 .첫자.첫자1 .상 {
+    height: 100%;
+    /* 부모의 높이를 따라가겠다 */
+    background-image: url(../image/img2.jpg);
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    /* position: absolute; 되면 인라인요소처럼 자신의 공간만 차지하게됨 이럴때는 부모의 넓이를 따라가기위해 넓이 지정을 다시 해줘야함 width:100%; */
+    left: 100%;
+    top: 0;
+    width: 100%;
+    transition: 0.3s;
+    /* 본체에 주는 이유는 마우스 올리고 내릴때 모두 부드럽게 적용, 본체에 주게되면 획 획 부드럽지 않게 작용 */
+
+}
+
+.전체 .첫째 .첫자.첫자1:hover .상 {
+    left: 0;
+    /* 원래있던자리 */
+}
+
+
+.전체 .첫째 .첫자.첫자1 .상 h4 {
+    position: absolute;
+    /* 부모가 이미 abbsolute 되어있기 때문에 따라감 */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.전체 .첫째 .첫자.첫자2 {
+    position: relative;
+    overflow: hidden;
+    /* 상하 다 품고 있는 얘한테 적용 */
+}
+
+.전체 .첫째 .첫자.첫자2>div {
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.전체 .첫째 .첫자.첫자2>div h4 {
+    position: absolute;
+    /* .전체 .첫째 .첫자.첫자2>div에 absolute가 걸려있어서 적용 가능한것 부모가 기준이 되어 잡아줌 */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.전체 .첫째 .첫자.첫자2 .상 {
+    background-image: url(../image/img3.jpg);
+    background-size: cover;
+    background-position: center;
+    /* z-index는 position이 있어야 사용가능
+    (relative, absolute, fixed일때) */
+    z-index: 2;
+    top: -100%;
+    /* 100% 밑으로 떨어뜨리기 위한 값, -100%은 위에서 떨어짐*/
+    transition: 0.3s;
+}
+
+.전체 .첫째 .첫자.첫자2:hover .상 {
+    top: 0;
+    /* 첫자2에 호버했을때 올라오게 만든다 */
+}
+
+.전체 .첫째 .첫자.첫자2 .상 h4 {}
+
+.전체 .첫째 .첫자.첫자2 .하 {
+    background-image: url(../image/img4.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.전체 .첫째 .첫자.첫자2 .하 h4 {}
+
+.전체 .첫째 .첫자.첫자3 {
+    margin-right: 0;
+    position: relative;
+}
+
+/* ▼ 상하를 동시에 잡고있는 아이 */
+.전체 .첫째 .첫자.첫자3>div {
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    /* 첫자3에서 기준 찾아주기 */
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.전체 .첫째 .첫자.첫자3>div h4 {
+    position: absolute;
+    /* 정중앙에 위치하게함 */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.전체 .첫째 .첫자.첫자3 .상 {
+    background-image: url(../image/img5.jpg);
+    z-index: 10;
+    /* 1보다 큰 수를 주면됨 아래 레이어의 숫자보다만 크면 됨 */
+    opacity: 0;
+    /* 처음에는 안보이다가 마우스 올리면 보이게 */
+    transform: scale(0.3);
+    transition: 0.3s;
+    transition-timing-function: cubic-bezier(0.4, 0.46, 0.25, 1);
+    /* 개발자모드에서 값 설정하여 그 값을 복사해 붙여넣기 */
+}
+
+.전체 .첫째 .첫자.첫자3:hover .상 {
+    opacity: 1;
+    /* 있는데 눈에만 보이지 않게 하는 것 0.5면 투명도 50%*/
+    transform: scale(1);
+    border-radius: 50%;
+    /* 50%이면 반경을 주는것, 10%은 끝만 둥글게 */
+}
+
+.전체 .첫째 .첫자.첫자3 .하 {
+    background-image: url(../image/img6.jpg);
+}
+
+.전체 .둘째 {
+    background-color: green;
+    /* ▼ %의 기준
+    witdth --> 부모(.전체)의 넓이
+    height --> 부모(.전체)의 높이 
+               단 부모가 높이값이 있어야 한다
+    padding, margin은 상하좌우 모두 부모의 넓이를 기준으로 함
+    */
+    width: 30%;
+    height: 30%;
+    padding: 5%;
+    margin-top: 5%;
+}

@@ -1,0 +1,222 @@
+@charset "UTF-8";
+*{margin: 0; padding: 0;} /* 원하는 영역으로 잡기 위한 과정 */
+
+.clear::after{
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.전체{
+    background-color: #EAC7C7;
+    width: 1000px; margin: 0 auto;
+    margin-top: 100px;
+    padding: 30px 0; /* 위아래 30, 좌우 0 */
+}
+
+.전체 .첫째{
+    background-color: #86C8BC;
+    width: 900px;
+    margin: 0 auto; /* 부모의 영역에서 항상 가운데 */
+    padding: 30px;
+    box-sizing: border-box; /* 사이즈 계산에 보더까지 포함해라 */
+}
+
+.전체 .첫째>div{
+    background-color: #FFFBAC;
+    height: 200px;
+    width: 47.5%; /* 중간여백 5%제외 95/2하면 47.5 */
+    float: left;
+}
+
+.전체 .첫째 .첫손1{
+    position: relative;
+    margin-right: 5%; /* 중간여백5%에 해당 */
+    background-image: url(img/img1.jpg);
+    background-size: cover;
+    overflow: hidden;
+}
+.전체 .첫째 .첫손1 h4{
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%,-50%);
+    background-color: rgba(255, 255, 255, 0.3);
+    /* rgba 알파값, 전체 중 30%만 보여줘 255,255,255는 흰색 */
+    color: #222;
+    padding: 10px 30px;
+    border-radius: 10px;
+}
+
+.전체 .첫째 .첫손1 .right{
+    position: absolute; /* 기준 첫손1인데 이미 기준 잡혀있어서 ok */
+    left: 100%; /* 나의 왼쪽과 부모를 왼쪽을 기준으로 100% 떨어뜨리겠다 */
+    top: 0; width: 100%;
+    height: 100%;
+    background: url(img/img2.jpg); 
+    /* background-image:도 가능 */
+    background-size: cover;
+    transition: 0.3s;
+}
+
+.전체 .첫째 .첫손1:hover .right{
+    left: 0;
+}
+
+.전체 .첫째 .첫손2{
+    position: relative /* video에 대한 기준 */;
+    overflow: hidden;
+}
+.전체 .첫째 .첫손2 video{
+    position: absolute; /* 비디오를 정중앙에 위치 */
+    left: 50%; top: 50%;
+    transform: translate(-50%,-50%);
+    width: 120%; /* 비디오영역만 나오게 */
+}
+
+.전체 .둘째{
+    background-color: #91D8E4;
+    width: 900px;
+    margin: 30px auto;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.전체 .둘째>div{
+    background-color: #E3ACF9;
+    width: 23.5%;
+    margin-right: 2%;
+    float: left;
+    height: 200px;
+    position: relative; /* div 각각의 개별 기준을 잡아주는 것 
+    둘손1이 엡솔됐을때 둘자1이 기준이 되어야하고
+    둘손2이 엡솔됐을때 둘자2가 기준이 되어야하는데 둘자1,2가 div라 여기세 relatice 준것*/
+}
+
+.전체 .둘째>div.둘자4{
+    margin-right: 0;
+}
+
+.전체 .둘째>div>div{
+    position: absolute;
+    left: 50%; top: 50%;
+    background-color: #cf4dce;
+    transform: translate(-50%,-50%);
+    height: 40px; width: 100px;
+    text-align: center;
+    line-height: 40px;
+}
+/* 공통요소는 묶어 적고 개별로 들어가야할 것들 아래 빼서 적어주는 형식 많이 사용 */
+.전체 .둘째>div>div.둘손2{
+    left: auto; /* 왼쪽값에 관여하지마 */
+    top: auto;
+    right: 0;
+    bottom: 0;
+    transform: none;
+}
+
+/* 글은 왼/오 중 왼쪽값이 세지고 위/아래는 위가 세진다 위의 left 50%가 있으니 right0이 안먹히는 것*/
+
+.전체 .둘째>div>div.둘손3{
+    left: auto;
+    right: 0;
+    transform: none;
+    top: 0;
+}
+
+.전체 .둘째>div>div.둘손4{
+    top: auto; /* 아래쪽이니 top값 풀어줌 */
+    bottom: 0;
+    transform: none; /* transform으로 방해받으니 none으로 */
+    left: 0;
+}
+
+.전체 .셋째{
+    background-color: #B5D5C5;
+    width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.전체 .셋째>div{
+    background-color: #FD8A8A;
+    width: 45%;
+    float: left;
+    height: 200px;
+}
+
+.전체 .셋째>div.세자1{
+    position: relative; /* div의 기준 */
+    margin-right: 10%;
+    overflow: hidden; /* 세손1,2를 같이 잡고있는 아이 */
+}
+.전체 .셋째>div.세자1>div{
+    position: absolute;
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%;
+}
+
+.전체 .셋째>div.세자1>div h4{
+    position: absolute; /* div의 absolute가 기준을 잡아줌 */
+    left: 50%;  top: 50%;
+    transform: translate(-50%,-50%);
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #fff; font-size: 40px;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
+.전체 .셋째>div.세자1>div.세손1{
+    background-image: url(img/img1.jpg);
+    background-size: cover;
+    z-index: 10;
+    left: 100%;
+    transition: 0.3s;
+}
+
+.전체 .셋째>div.세자1:hover>div.세손1{
+    left: 0; /* 세자1에 호버하면 세손1이 원위치로 옴 */
+}
+
+.전체 .셋째>div.세자1>div.세손2{
+    background-image: url(img/img2.jpg);
+    background-size: cover;
+}
+/* 세손1, 세손2는 걸어준 조건이 같기 때문에 아래 적은 하가 위에 위치하게 된다 */
+
+.전체 .셋째>div.세자2{
+    overflow: hidden;
+    position: relative;
+}
+
+.전체 .셋째>div.세자2 video{
+    position: absolute;
+    top: 50%; transform: translateY(-50%); /* 넓이 100이니 가운데는 맞출 필요없어서 위아래인 y값만 조정한것 */
+    width: 100%;
+}
+/* top: 50%; left : 50%
+transform: translate(-50%,-50%);
+width: 120%; 넓이가 바뀔경우 값조정해주기*/ 
+
+/* 혼자 추가 작업
+.전체 .넷째{
+    background-color: #FC92E3;
+    width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    box-sizing: border-box;
+}
+.전체 .넷째>div{
+    background-color: #005792;
+    width: 45%;
+    height: 200px;
+    float: left;
+}
+    
+.전체 .셋째>div.넷자1{
+    position: relative;
+    margin-right: 10%;
+} */
+

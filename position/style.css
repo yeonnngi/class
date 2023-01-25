@@ -1,0 +1,96 @@
+@charset "UTF-8"; /* 한글이 깨지는 것을 방지 */
+*{margin: 0;padding: 0;} /* 예측하지 못하는 공간 다 빼주기 */
+
+.치료::after{
+    content: "";
+    clear: both; /* 약이름 */
+    display: block; /* after는 인라인요소라 블록 안먹혀서 블록요소로 바꿔주는 역할 맨끝에 약을 만들어 치료하게 해주는 것*/
+    
+}
+
+.전체{
+    position: relative; /* 포지션된 애들을 인지하지 못해서 자신을 전체를 기준으로 잡아준것 */
+    background-color: gray;
+    width: 600px; /* 넓이600 */
+    border: 5px solid #000;
+    margin-left: 100px; /* 왼쪽에 마진주기 */
+    margin-top: 200px;
+}
+
+.전체>div{
+    width: 150px;
+    height: 150px;
+}
+
+.전체 .pink{
+    background-color: pink;
+    position: static; /* 기본값이라 안적어도 static, left 적용 안됨*/
+    left: 50px;
+}
+
+.전체 .green{
+    background-color: green;
+    position: relative; /* 원래 자신의 위치를 기억함
+    주위에 아무런 영향을 주지 않음
+    다른 요소들은 이 요소가 옮겨져도 항상 원래의 위치에 있다고 생각함 left, top의 기준은 원래 자신의 위치*/
+    left: 250px; top: 50px; /* 나의 위치가 원래의 위치에서 왼쪽으로부터 250px 떨어지고 위에서부터 50px 떨어짐 */
+}
+
+.전체 .red{
+    background-color: red;
+    position: absolute; /* 죽어서 부모가 인식하지 못하는 상태 부모에게 달라붙은 유령
+    원래가진 자신의 영역을 상실
+    조상을 기준으로 삼는데 조상이 기준이 되기 위해서는 조상의 position이 relative, absoulte, fixed이면 기준이 될 수 있다*/
+    left: 100px; top: 100px;
+}
+
+.전체 .blue{
+    position: fixed; /* 윈도우를 기준으로 배치 화면에 고정되어 따라온다 */
+    right: 150px; top: 100px; /* 오른쪽에서 150px을 기준으로 위에서 100px 떨어져 위치 */
+    background-color: blue;
+}
+
+.영역{
+    margin-top: 50px;
+    background-color: gray;
+    border: 5px solid #000;
+    width: 1000px;
+    margin: 50px auto 0; /* 항상 가운데 위치하도록 하려면 0 auto */
+    padding: 20px;
+    box-sizing: border-box; /* 1000px안에 보더와 패딩 값이 다 포함되도록 하는 것 */
+}
+
+.영역>div{
+    background-color: green;
+    width: 49%;
+    float: left; /* 부모가 깨지므로 치료 만들기 */
+    height: 300px; /* 자식이 absolute가 되더라도 높이를 강제로 지정해주었기 때문에 300px를 계속 인식 */
+}
+
+.영역>div.포지션1{
+    margin-right: 2%;
+    position: relative; /* 자식 포자의 기준이 되기 위해 position을 주변에 아무런 영향을 주지않는 relative로 지정해주는 것 */
+    overflow: hidden;
+}
+
+.영역>div.포지션1 .포자{
+    width: 0%;
+    height: 0%; 
+    background-color: pink;
+    position: absolute; /* 기준이 되는게 없으면 body에 붙기 때문에 부모에게 붙게하고 싶으면 부모에게 코드 추가해야함 */
+    left: 50%; top: 50%; /* 부모의 넓이를 기준으로 50 높이를 기준으로 50 이렇게 위치해라 */
+    /* transform: translate(x축,y축); %의 기준이 자신, 음수는 위로 앞으로 이동하게 됨*/
+    transform: translate(-50%,-50%);
+    /* 자신의 위치에서 정중앙으로 이동하는 코드
+    자기위치에서 50%만큼 위로, 앞으로 이동해야 정중앙에 위치하게 됨 */
+    transition: 0.5s;
+}
+
+.영역>div.포지션1:hover .포자{ /* 포지션1에 마우스 호버를 하면 포자를 아래만큼 키워주겠다 */
+    width: 120%;
+    height: 120%;
+}
+
+.space {
+    height: 2000px;
+}

@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.치료::after{
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.박일수{
+    background-color: #EAC7C7;
+    width: 1000px;
+    /* margin-right: auto;
+    margin-left: auto; */
+    margin: 0 auto;
+    /* 상하는 0 좌우는 auto 
+    위아래는 auto가 작용하지 않기 때문에 0 작성해주기*/
+
+    padding: 20px;
+    /* 상하좌우 */
+    padding: 20px 40px;
+    /* 상하 좌우 */
+    /* 같은 명령어면 제일 아래값으로 덮어쓰여짐 */
+    padding: 20px 40px 50px;
+    /* 상 좌우 하 */
+    padding: 10px 20px 30px 40px;
+    /* 상 우 하 좌 시계방향*/
+}
+
+.박일수 .박첫째{
+    background-color: #A0C3D2;
+    padding: 20px;
+}
+
+.박일수 .박첫째 .자식{
+    width: 49%;
+    height: 200px;
+    float: left;
+}
+
+.박일수 .박첫째 .자식.첫째자식1{
+    background-color: #D09CFA;
+    margin-right: 2%;
+    padding: 20px;
+    border: 5px solid red;
+    /* box-sizing: border-box;
+    width + padding + border 를 영역 안으로 포함
+    내가 설정해 놓은 너비나 높이 안으로 선까지 지정시켜주는 것 */
+    box-sizing: border-box;
+}
+
+.박일수 .박첫째 .자식.첫째자식2{
+    background-color: #F3CCFF;
+}
+
+.박일수 .박첫째 .자식.첫째자식2 object{
+    width: 100%; height: 100%;
+}
+
+.박일수 .박둘째{
+    background-color: #A3BB98;
+    padding: 20px;
+    /* margin: 30px 0 0; <-- margin-top: 30px 과 같은 말*/
+    margin-top: 30px;
+    /* 띄워쓰기 --> 자손
+       > --> 직계자식 */
+}
+
+.박일수 .박둘째>div{
+    background-color: #FCF9BE;
+    width: 23.5%;
+    float: left;
+    height: 100px;
+    margin-right: 2%;
+}
+
+.박일수 .박둘째>div.둘자식1{
+    background-image: url(img.png); /* 내가가진 내 영역 뒤를 타일형 이미지로 반복해 채우겠다 */
+    background-size: 60px; /* 배경 사이즈 */
+    background-repeat: no-repeat; /* 배경이 패턴처럼 반복되는걸 방지하겠다 */
+    background-position: 85px 20px; /* x축값 y축값 */
+    transition: 0.3s; /* 이미지 호버 시 움직이는 시간 */
+}
+
+.박일수 .박둘째>div.둘자식1 :hover{
+    background-size: 80px; /* 이미지 호버 시 바뀌는 이미지 사이즈 */
+    background-position: center center 
+    /* x축이든 y축으로든 가운데로 맞추겠다 */
+}
+
+.박일수 .박둘째>div.둘자식2{
+    background: #ffb26b url(img2.png)no-repeat 80px 15px;
+    background-size: 60px;
+    /* 배경에 대한 모든 정보를 공통으로 작성
+                색상  이미지          반복하지X  x축 y축  사이즈
+    background: #ffb26b url(img2.png)no-repeat 10px 5px/20px;
+    띄어쓰기로 분리하고 숫자는 헷갈리니 x,y축 뒤 / 하고 사이즈 더해주기 
+    ▼ 또는 사이즈는 따로 적어주기
+    background: #ffb26b url(img2.png)no-repeat 10px 5px;
+    background-size: 100px;*/
+    transition: 0.3s; /* 변환되는 클래스가 아닌 앞의 이미지에 트랜지션을 주는 이유는 
+    부드럽게 전환하기 위함 */
+    
+}
+
+.박일수 .박둘째>div.둘자식2:hover{
+    background-image: url(img3.png);
+    /* 위의 설정값은 지키되 마우스 호버시 이미지만 바뀌게 할 경우 
+    위와 같이 이미지 링크만 추가작성 */
+}
+
+.박일수 .박둘째>div.둘자식3{
+    overflow: hidden; /* 영역보다 큰 자식요소를 숨김 */
+}
+
+.박일수 .박둘째>div.둘자식3 iframe{
+    width: 50%; /* 부모의 넓이에 100% 맞추기 높이는 건들면 안됨 */
+}
+
+.박일수 .박둘째>div.둘자식4{
+    margin-right: 0;
+    /* 위 div에 margin-right: 2%가 둘자식4한테도 먹힌것 그걸 해제하기 위함
+    제일 마지막에 썼으니 이 값으로 덮어쓰여짐 */
+    overflow: hidden;
+}
+
+.박일수 .박둘째>div.둘자식4 iframe{
+    width: 100%; /* 부모의 넓이에 100% 맞추기 높이는 건들면 안됨 */
+}
+
+
+.박일수 .박세째{
+    background-color: #DBA39A;
+    margin-top: 30px;
+    padding: 20px;
+    color: white; /* 글자에 적용되는 요소 인라인요소는 자손에 상속가능
+    박세째가 품고 있는 모든것에 적용되어짐*/
+}
+
+.박일수 .박세째>div{
+    background-color: #B6E2A1;
+    width: 32%;
+    margin-right: 2%;
+    height: 200px;
+    float: left;
+    font-size: 20px;
+    text-align: center; /* 글자정렬 */
+    line-height: 200px; /* 행간 */
+}
+
+.박일수 .박세째>div.세자식1{}
+.박일수 .박세째>div.세자식2{}
+.박일수 .박세째>div.세자식3{
+    margin-right: 0; /* 위 div에 margin-right: 2%가 둘자식4한테도 먹힌것 그걸 해제하기 위함
+    제일 마지막에 썼으니 이 값으로 덮어쓰여짐 */
+}

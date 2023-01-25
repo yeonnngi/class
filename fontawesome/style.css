@@ -1,0 +1,7 @@
+
+.section::after{
+    content: "\f7c5"; 
+    /* enter 위의 돈표시가 역슬러쉬\ */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}

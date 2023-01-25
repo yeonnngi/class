@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>position</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="전체">
+        <!-- id로 명을 붙일 경우, 해당 폴더 안에서 해당 id가 절대로 중복되면 안된다. id가 유일할 경우에만 사용하고 공통요소는 class로 사용, id는 여러가지 사용X 하나만 작성 가능 -->
+        <div class="첫째자식">
+            <!-- a라는 클래스안에 b자식이 있고 그 안에 첫째손자 -->
+            <div class="wrap"> <!-- 부모가 padding이 있는 상태에서 마우스를 올렸을때 absolute가 패딩값을 제외하고 자리잡을 수 있는 부모 역할을 하는 클래스를 하나 더 써줘야 한다 -->
+                <div class="첫째손자 첫손1">첫째손자1</div>
+                <div class="첫째손자 첫손2">첫째손자2</div>
+            </div>
+        </div>
+        <div class="둘째자식">
+            <div class="둘째손자">둘째손자</div>
+        </div>
+        <div class="셋째자식 clear"> <!-- class명은 또 만들 필요 없이 띄어쓰기로 적어주기 -->
+            <div class="셋째손자1">
+                <h4>정렬하는 요소들(순서가 있는 List)</h4>
+                <ol>
+                    <li>Coffee</li>
+                    <li>Tea</li>
+                    <li>Milk</li>
+                </ol>
+            </div>
+            <div class="셋째손자2">
+                <h4>정렬하는 요소들(순서가 없는 List)</h4>
+                <!-- ul>li*3 ul 안에 li만들건데 3개를 만들겠다 -->
+                <ul><!-- 순서있는 리스트 밑으로는 li만 포함시킬 수 있음 -->
+                    <li>Coffee</li>
+                    <li>Tea</li>
+                    <li>Milk</li>
+                </ul>
+            </div>
+        </div>
+        <div class="넷째자식">
+            <div class="넷째손자">
+                <dl>
+                    <dt>커피</dt>
+                    <dd>검정색의 쓴맛의 액체</dd>
+
+                    <dt>사과</dt>
+                    <dd>초겨울에 생산되는 맛있는 과일</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,157 @@
+@charset "UTF-8"; 
+/* UTF-8은 지구상의 모든 언어(아랍어, 한자 등)를 화면에 표현할 수 있는 코드 */
+*{margin: 0; padding: 0;}
+
+.clear::after{
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.wrap{
+    background-color: #9DF1DF;
+    width: 1200px;
+    margin: 100px auto 0; 
+    padding: 30px 0;
+}
+.wrap .first{
+    background-color: #84D2C5;
+    width: 1000px;
+    margin: 0 auto;
+    padding: 30px;
+    border: 10px solid pink;
+    box-sizing: border-box; 
+    /* 패딩, 보더까지 박스사이즈에 포함 */
+}
+.wrap .first .child{
+    background-color: #FFC6D3;
+    width: 23.5%; 
+    /* 100에서 총 마진 6% 뺀 94 나누기 4=23.5 */
+    float: left; /* 옆으로 정렬 */
+    height: 200px;
+    margin-right: 2%;
+    position: relative; /* .child h4의 기준 */
+
+}
+
+.wrap .first .child h4{
+    position: absolute;
+    background-color: #222;
+    color: #fff;
+    border-radius: 3px;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    /* 안에 공간주기
+    1번 방법 
+    padding: 10px 20px; */
+    /* 2번 방법 
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px; */
+}
+/* 어제 배운 내용은 공통으로 넣고 개별 설정해주는 것
+(▲ 보편적으로 많이 사용)
+오늘은 개별값 설정*/
+.wrap .first .child1 h4{
+    left: 50%; top: 50%;
+    transform: translate(-50%,-50%); 
+}/* h4태그 정중앙에 위치 */
+
+.wrap .first .child2 h4{
+    top: 0; right: 0;
+}
+.wrap .first .child3 h4{
+    bottom: 0; right: 0;
+}
+
+.wrap .first .child4{margin-right: 0;}
+.wrap .first .child4 h4{
+    left: 0; bottom: 0;
+}
+
+.wrap .two{
+    background-color: #86C8BC;
+    width: 1000px;
+    margin: 20px auto;
+    padding: 30px;
+    box-sizing: border-box;
+}
+.wrap .two>div{
+    background-color: #ADA2FF;
+    float: left;
+    width: 45%;
+    height: 200px;
+    text-align: center;
+    line-height: 200px;
+}
+
+.wrap .two>div.child1{
+    margin-right: 10%;
+}
+
+.wrap .three{
+    background-color: #82AAE3;
+    width: 1000px;
+    margin: 20px auto;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.wrap .three>div{
+    background-color: #FFDB89;
+    width: 45%;
+    float: left;
+    height: 200px;
+}
+
+.wrap .three>div.child1{
+    margin-right: 10%;
+    position: relative;
+    overflow: hidden;
+}
+.wrap .three>div.child1>div{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.wrap .three>div.child1>div h4{
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%,-50%);
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-size: 40px;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+.wrap .three>.child1>div.c1{
+    background-image: url(img/img1.jpg);
+    background-size: cover;
+    left: 100%;
+    transition: 0.3s;
+    z-index: 10;
+}
+
+.wrap .three>div.child1>div.c2{
+    background-image: url(img/img2.jpg);
+    background-size: cover;
+}
+.wrap .three>div.child1:hover>div.c1{
+    left: 0;
+}
+
+.wrap .three>.child2{
+    overflow: hidden;
+    position: relative;
+
+}
+.wrap .three>.child2 video{
+    position: absolute;
+    top: 50%; transform: translateY(-50%); 
+    width: 100%;
+}
